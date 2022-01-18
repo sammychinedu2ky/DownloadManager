@@ -1,0 +1,74 @@
+﻿<UserControl x:Class="DownloadManager.Components.DownloadView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:DownloadManager.Components"
+             mc:Ignorable="d"
+             d:DesignHeight="450"
+             d:DesignWidth="800">
+    <Grid Background="#FFEF7DE1"
+          Height="80"
+          DataContext="{Binding}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="3*" />
+            <RowDefinition Height="4*" />
+            <RowDefinition Height="7*" />
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0"
+                   Foreground="White">
+            <TextBlock.Text>
+                <MultiBinding StringFormat=" {0} / {1}">
+                    <Binding Path="LocalSize" />
+                    <Binding Path="OnlineSize" />
+                </MultiBinding>
+            </TextBlock.Text>
+        </TextBlock>
+        <ProgressBar Grid.Row="1"
+                     Name="progressBar"
+                     Value="{Binding Path=Progress}"
+                     Height="20"
+                     Background="#FFEABBBB">
+            <ProgressBar.Foreground>
+                <LinearGradientBrush EndPoint="0.5,1"
+                                     StartPoint="0.5,0">
+                    <GradientStop Color="#FF8FA25F"
+                                  Offset="0" />
+                    <GradientStop Color="#FFBAFF0A"
+                                  Offset="1" />
+                </LinearGradientBrush>
+            </ProgressBar.Foreground>
+        </ProgressBar>
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="7*" />
+                <ColumnDefinition Width="1.5*" />
+                <ColumnDefinition Width="1.5*" />
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="{Binding Path=FileName}"
+                       Foreground="White"
+                       Grid.Column="0" />
+            <Image Grid.Column="1"
+                   Name="PauseImg"
+                   Source="/Images/pause.png"
+                   Height="20"
+                   MouseDown="clickPause" />
+            <Image Grid.Column="1"
+                   Name="PlayImg"
+                   Source="/Images/play.png"
+                   Height="22"
+                   MouseDown="clickPlay" />
+            <Image Grid.Column="1"
+                   Name="FolderImg"
+                   Source="/Images/folder.png"
+                   Height="22"
+                   MouseDown="clickFolder" />
+            <Image Grid.Column="2"
+                   Name="DeleteImg"
+                   Source="/Images/delete.png"
+                   Height="22"
+                   MouseDown="clickDelete" />
+
+        </Grid>
+    </Grid>
+</UserControl>

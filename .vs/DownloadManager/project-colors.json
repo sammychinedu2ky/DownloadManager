@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "9ec2b408-6232-442f-88d6-86a36c3f5409": {
+      "ProjectGuid": "9ec2b408-6232-442f-88d6-86a36c3f5409",
+      "DisplayName": "DownloadManager",
+      "ColorIndex": 0
+    }
+  },
+  "NextColorIndex": 1
+}
