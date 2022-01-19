@@ -54,15 +54,15 @@ namespace DownloadManager.Components
                 httpClient.DefaultRequestHeaders.Range = new RangeHeaderValue(FileSize(), null);
                 var response = await httpClient.GetStreamAsync(context.Url, source.Token);
 
-                var read = true;
+               
                 using var fStream = new FileStream(context.FilePath, FileMode.Append);
-                while (read)
+                while (true)
                 {
                     if (source.IsCancellationRequested)
                     {
                         break;
                     }
-                    var buffer = new byte[9000000];
+                    var buffer = new byte[context.OnlineSize];
                     var readBytes = await response.ReadAsync(buffer, 0, buffer.Length);
 
                     if (readBytes == 0)
